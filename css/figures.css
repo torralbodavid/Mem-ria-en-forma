@@ -1,0 +1,75 @@
+/*
+ * Copyright (c) 2017. This code has been developed by David Torralbo Pérez. @torralbo_
+ */
+
+body{
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+.figura {
+    margin: 5px;
+}
+
+#figuresAtzar {
+    margin-top: 10%;
+}
+
+.boxFigures {
+    background-color: rgb(143, 137, 144);
+    padding: 20px;
+    border-radius: 20px;
+}
+
+#circle {
+    cursor:pointer;
+    width: 100px;
+    height: 100px;
+    background: #bc76ff;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+}
+
+
+#square {
+    cursor:pointer;
+    width: 100px;
+    height: 100px;
+    background: #55b6ff;
+}
+
+#triangle {
+    cursor:pointer;
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 100px solid #ff6daf;
+}
+
+#cross {
+    cursor:pointer;
+    background: #0cffd5;
+    height: 100px;
+    position: relative;
+    width: 20px;
+}
+#cross:after {
+    background: #0cffd5;
+    content: "";
+    height: 20px;
+    left: -40px;
+    position: absolute;
+    top: 40px;
+    width: 100px;
+}

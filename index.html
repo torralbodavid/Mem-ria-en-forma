@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!--
+  ~ Copyright (c) 2017. This code has been developed by David Torralbo Pérez. @torralbo_
+  -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- apple -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="white">
+
+    <title>Memòria en forma!</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/figures.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.4/js.cookie.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://csshake.surge.sh/csshake.min.css">
+</head>
+<body class="noselect">
+<!-- Elements amagats -->
+<span hidden id="intents">0</span>
+
+<!-- Static navbar -->
+<nav class="nav navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand">Memòria en forma</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a  href="#" id="startGame">Iniciar</a></li>
+                <li><a href="/" id="sortir">Sortir</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div><!--/.container-fluid -->
+</nav>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-sm-6 col-xs-6 text-right">
+            <a class="btn"><h2 id="time">01:00</h2></a>
+        </div>
+        <div class="col-sm-6 col-xs-6">
+            <a id="ranking" class="btn" type="button" data-toggle="tooltip" data-placement="bottom" title="Millor puntuació: 0"><h2>Punts: <span id="points">0</span></h2></a>
+        </div>
+    </div>
+    <br>
+    <!-- Figures aleatòries -->
+    <div class="row" align="center">
+        <div id="figuresAtzar"></div>
+    </div>
+    <br>
+
+    <!-- panell d'elecció de les figures -->
+    <span id="divPanell">
+        <div id="panell" class="row boxFigures hidden" align="center">
+            <div class="col-sm-3 col-xs-6"><div class="figura shake" id="square"></div></div>
+            <div class="col-sm-3 col-xs-6"><div class="figura shake" id="circle"></div></div>
+            <div class="col-sm-3 col-xs-6"><div class="figura shake" id="cross"></div></div>
+            <div class="col-sm-3 col-xs-6"><div class="figura shake" id="triangle"></div></div>
+        </div>
+    </span>
+    <br>
+    <!-- Figures seleccionades -->
+    <div class="row" align="center">
+        <div id="figuresSeleccionades" class=""></div>
+    </div>
+
+</div>
+
+</body>
+<script src="js/layout.js"></script>
+<script src="js/joc.js"></script>
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    })
+</script>
+</html>
