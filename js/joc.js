@@ -39,7 +39,7 @@ var jocFigures = {
         var duration = 60 * 1;
         var timer = duration, minutes, seconds;
 
-        if(intents == 55){
+        if(intents == 12355){
             var counter = 3;
             id = setInterval((function() {
                 counter--;
@@ -233,7 +233,7 @@ var jocFigures = {
                     this.selectors.points.text(parseInt(punts));
                 }
 
-                this.startComptador(55);
+                this.startComptador(12355);
                 this.selectors.figuresSeleccionades.empty();
                 this.figuresPantalla();
                 nombreClics = 0;
