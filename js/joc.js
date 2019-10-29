@@ -4,7 +4,7 @@
 var jocFigures = {
 
     /*
-     Inicialitza les següents funcions
+     Initialize the functions
      */
     init:function(){
         this.initSelectors();
@@ -15,7 +15,7 @@ var jocFigures = {
     },
 
     /*
-     Inicialitza els selectors necessaris
+     Initialize the selectors
      */
     initSelectors: function(){
         this.selectors = {};
@@ -32,7 +32,7 @@ var jocFigures = {
     },
 
     /*
-    Inicialitza el comptador
+    Initialize the countdown
      */
     startComptador: function(intents) {
         var segons = 0;
@@ -44,7 +44,7 @@ var jocFigures = {
             id = setInterval((function() {
                 counter--;
                 if(counter < 0) {
-                    //Torna a mostrar-se tot!
+                    //The figures will be shown again!
                     this.selectors.panell.addClass("hidden");
                     this.selectors.figuresAtzar.addClass("hidden");
                     this.selectors.divPanell.append('<div id="panell" class="row boxFigures" align="center">\n' +
@@ -56,7 +56,7 @@ var jocFigures = {
                     counter = 3;
                     clearInterval(id);
                 } else {
-                    //Compte enrere dels 3 segons...
+                    //3 seconds countdown...
                     this.selectors.divPanell.empty();
                     this.selectors.figuresAtzar.removeClass("hidden");
                 }
@@ -65,12 +65,12 @@ var jocFigures = {
 
         var downloadTimer = setInterval((function () {
 
-            //Si s'ha accionat el botó més d'un cop...
+            //If the button has been triggered more than one time...
             if(intents >= 1){
                 clearInterval(downloadTimer);
             }
 
-            //Si els segons d'espera són 3...
+            //If the waiting time is 3...
             if(segons >= 3){
                 this.selectors.divPanell.removeClass("hidden");
                 this.selectors.panell.removeClass("hidden");
@@ -84,7 +84,7 @@ var jocFigures = {
             minutes = minutes < 10 ? "0" + minutes : minutes;
             seconds = seconds < 10 ? "0" + seconds : seconds;
 
-            //Si és el primer intent, actualitzem el comptador...
+            //If is the first try, we update the countdown...
             if(intents == 0) {
                 this.selectors.comptador.text(minutes + ":" + seconds);
             }
@@ -93,7 +93,7 @@ var jocFigures = {
             if (--timer < -1) {
                 timer = duration;
             } else if(timer <= -1){
-                //Si el temps finalitza
+                //If the time stops
                 clearInterval(downloadTimer);
                 this.quanAcabaTemps();
             }
@@ -106,7 +106,7 @@ var jocFigures = {
     },
 
     /*
-    S'accionarà quan es premi el botor d'iniciar
+    It will be triggered when the start button is pressed
      */
     botoIniciar: function () {
         this.selectors.btn_iniciar.on('click', (function() {
@@ -129,7 +129,7 @@ var jocFigures = {
     },
 
     /*
-    S'accionarà quan es premi el botor de sortir
+    It will be triggered when the log out button is pressed
      */
     botoSortir: function () {
         this.selectors.sortir.on('click', (function() {
@@ -140,13 +140,13 @@ var jocFigures = {
     },
 
     /*
-    S'iniciarà quan finalitzi el temps o al pulsar el botó de sortir
+    It will be triggered when the time stops or when the log out button is pressed
      */
     quanAcabaTemps: function () {
         this.selectors.intents.text(parseInt(0));
         this.selectors.points.text(0);
 
-        //ocultem ambdós div
+        //hide all divs
         this.selectors.divPanell.addClass("hidden");
         this.selectors.figuresAtzar.addClass("hidden");
         this.selectors.figuresSeleccionades.addClass("hidden");
@@ -157,7 +157,7 @@ var jocFigures = {
     },
 
     /*
-    Retorna una figura a l'atzar
+    Return a random figure
      */
     figures: function () {
         var figures = ["circle", "square", "cross", "triangle"];
@@ -165,14 +165,14 @@ var jocFigures = {
     },
 
     /*
-    Imprimeix les figures en pantalla
+    Print the figures
      */
     figuresPantalla: function () {
-        //eliminem el contingut del div figuresAtzar
+        //Delete the content of figuresAtzar div
         this.selectors.figuresAtzar.empty();
 
         for (i = 0; i < 4; i++) {
-            //generem una figura aleatòria
+            //generating random figure
             var figura = this.figures();
             this.selectors.figuresAtzar.append('<div class="col-sm-3 col-xs-6"><div class="figura" id="'+figura+'"></div></div>');
         }
@@ -180,25 +180,25 @@ var jocFigures = {
     },
 
     /*
-    Comprova arrays
+    Array check
      */
     comprovaArray: function () {
 
-        // Comprovem array aleatori
+        // Check random array
         var figuresAtzar = [];
         $("#figuresAtzar > div > div").each(function () {
             var id = $(this).attr("id");
             figuresAtzar.push(id);
         });
 
-        // Comprovem array usuari
+        // Check random user
         var figuresUsuari = [];
         $("#figuresSeleccionades > div > div").each(function () {
             var id = $(this).attr("id");
             figuresUsuari.push(id);
         });
 
-        //Comprovem si són iguals
+        //Check if the two array are equal
         if(figuresAtzar.length !== figuresUsuari.length)
             return false;
         for(var i = figuresAtzar.length; i--;) {
@@ -210,22 +210,22 @@ var jocFigures = {
     },
 
     /*
-    Quan es faci clic a les figures
+    When figure is clicked
      */
     onClickFigures: function () {
 
 
-        //comptem el nombre de clics a figures
+        //counting the clicks on a figure
         var nombreClics = 0;
         var punts = 0;
 
         this.selectors.divPanell.on('click', '#panell .figura', (function(ev) {
-            //s'afegeixen a un div
+            //adding div
             this.selectors.figuresSeleccionades.removeClass("hidden");
             this.selectors.figuresSeleccionades.append('<div class="col-sm-3 col-xs-6"><div class="figura" id="'+ev.target.id+'"></div></div>');
             nombreClics = nombreClics+1;
 
-            //si el nombre de clics és de 4...
+            //if the number of clicks is 4...
             if(nombreClics == 4){
 
                 if(this.comprovaArray()){
